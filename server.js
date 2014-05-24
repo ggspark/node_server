@@ -28,6 +28,7 @@ app.configure(function(){
 app.get('/', function(req, res){
 	//Apache-like static index.html (public/index.html)
 	res.redirect("/");
+	res.status(404).render('/404.html');
 	//Or render from view
 	//res.render("index.html")
 });
