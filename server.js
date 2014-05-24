@@ -25,9 +25,6 @@ app.get('/', function(req, res){
 	res.redirect("/");
 });
 
-
-app.use(express.bodyParser());
-
 app.get('*', function(req, res){
   res.redirect("/404.html");
 });
