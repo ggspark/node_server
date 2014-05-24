@@ -16,24 +16,21 @@ app.configure(function(){
 
 	//Error Handling
 	app.use(express.logger());
-	app.use(express.errorHandler({
-		dumpExceptions: true, 
-		showStack: true
-	}));
-	
+
 	//Setup the Route, you are almost done
 	app.use(app.router);
 });
 
 app.get('/', function(req, res){
-	//Apache-like static index.html (public/index.html)
 	res.redirect("/");
-	res.status(404).render('/404.html');
-	//Or render from view
-	//res.render("index.html")
 });
 
+
 app.use(express.bodyParser());
+
+app.get('*', function(req, res){
+  res.redirect("/404.html");
+});
 
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
